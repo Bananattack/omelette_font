@@ -86,13 +86,14 @@ def create_monochrome_sheet(source_image, glyph_size, remove_shadows=False):
 
     return result_image
 
-def erase_grid_bleed(image, grid_size):
+def erase_grid_bleed(image, grid_size, erase_h, erase_v):
     data = image.load()
     w, h = image.size
 
     for x in range(w): 
         for y in range(h):
-            if x % grid_size[0] == 0 or y % grid_size[1] == 0:
+            if erase_h and x % grid_size[0] == 0 \
+            or erase_v and y % grid_size[1] == 0:
                 data[(x, y)] = TRANSPARENT
 
     return image
@@ -153,7 +154,7 @@ def generate_hshadow_variant(source_image, subsheet):
     silhouette_image = create_silhouette(source_image, BLACK)
 
     result_image.paste(silhouette_image, (1, 0), silhouette_image)
-    erase_grid_bleed(result_image, subsheet.glyph_size)
+    erase_grid_bleed(result_image, subsheet.glyph_size, True, False)
     result_image.paste(source_image, (0, 0), source_image)
 
     return result_image
@@ -163,7 +164,7 @@ def generate_vshadow_variant(source_image, subsheet):
     silhouette_image = create_silhouette(source_image, BLACK)
 
     result_image.paste(silhouette_image, (0, 1), silhouette_image)
-    erase_grid_bleed(result_image, subsheet.glyph_size)
+    erase_grid_bleed(result_image, subsheet.glyph_size, False, True)
     result_image.paste(source_image, (0, 0), source_image)
 
     return result_image
@@ -175,7 +176,7 @@ def generate_hvshadow_variant(source_image, subsheet):
     result_image.paste(silhouette_image, (1, 0), silhouette_image)
     result_image.paste(silhouette_image, (0, 1), silhouette_image)
     result_image.paste(silhouette_image, (1, 1), silhouette_image)
-    erase_grid_bleed(result_image, subsheet.glyph_size)
+    erase_grid_bleed(result_image, subsheet.glyph_size, True, True)
     result_image.paste(source_image, (0, 0), source_image)
 
     return result_image
