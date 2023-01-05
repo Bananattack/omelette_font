@@ -1,0 +1,3 @@
+- 2022-01-05: fix a few glyph shapes, especially in the small font, to improve their readability and flow next to other glyphs.
+- 2022-12-30: minor revision, fixes a few missing pixels in shadow variants. also fixes W and M in the small font, and W in the tall font so that they read a little better.
+- 2022-05-16: first upload
