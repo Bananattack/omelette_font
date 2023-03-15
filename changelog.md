@@ -1,3 +1,4 @@
+- 2023-03-14: more glyph adjustments, mostly in the tiny, thin, and thick fonts. Tiny font now can have shadow variants, because each 4x4 glyph keeps 1px margins on the bottom and right. Improve tilde, improve a few things that didn't line up height-wise.
 - 2023-03-03: fix a few glyph shapes, especially in the large and tall fonts, to improve their readability and flow next to other glyphs, as well as giving them better consistency in terms of height/thickness.
 - 2023-01-05: fix a few glyph shapes, especially in the small font, to improve their readability and flow next to other glyphs.
 - 2022-12-30: minor revision, fixes a few missing pixels in shadow variants. also fixes W and M in the small font, and W in the tall font so that they read a little better.
